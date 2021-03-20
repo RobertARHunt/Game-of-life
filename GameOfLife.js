@@ -115,3 +115,39 @@ const neighbours = [
 ];
 
 const sum = (accumulator, currentValue) => accumulator + currentValue;
+
+canvas.addEventListener("mousedown", canvasMouseDown);
+canvas.addEventListener("mouseup", canvasMouseUp);
+canvas.addEventListener("mousemove", canvasMouseMove)
+
+const mouseDrawState = {
+    active: false,
+    draw: false
+}
+
+function canvasMouseDown({ buttons, offsetX, offsetY }) {
+    if (buttons != 1) return;
+
+    mouseDrawState.active = true;
+    const x = Math.floor(offsetX / canvas.clientWidth * canvasSize / cellSize);
+    const y = Math.floor(offsetY / canvas.clientHeight * canvasSize / cellSize);
+
+    mouseDrawState.draw = !grid[x][y];
+    grid[x][y] = mouseDrawState.draw;
+    clear();
+    draw();
+}
+
+function canvasMouseUp({which}) {
+    if (which == 1) mouseDrawState.active = false;
+}
+
+function canvasMouseMove({ buttons, offsetX, offsetY }) {
+    if (!mouseDrawState.active) return;
+
+    const x = Math.floor(offsetX / canvas.clientWidth * canvasSize / cellSize);
+    const y = Math.floor(offsetY / canvas.clientHeight * canvasSize / cellSize);
+    grid[x][y] = mouseDrawState.draw;
+    clear();
+    draw();
+}
