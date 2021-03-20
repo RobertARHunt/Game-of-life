@@ -83,32 +83,21 @@ function newGrid() {
   return grid;
 }
 
-function clearGrid() {
+function generalPurposeGridUpdater(fn) {
   for (let x = 0; x < gridSize; x++) {
     for (let y = 0; y < gridSize; y++) {
-      grid[x][y] = false;
+      grid[x][y] = fn(grid[x][y]);
     }
   }
   draw();
 }
 
-function invertGrid() {
-  for (let x = 0; x < gridSize; x++) {
-    for (let y = 0; y < gridSize; y++) {
-      grid[x][y] = !grid[x][y];
-    }
-  }
-  draw();
-}
+const clearGrid = () => generalPurposeGridUpdater(() => false);
 
-function randomizeGrid() {
-  for (let x = 0; x < gridSize; x++) {
-    for (let y = 0; y < gridSize; y++) {
-      grid[x][y] = Math.random() < density;
-    }
-  }
-  draw();
-}
+const randomizeGrid = () =>
+  generalPurposeGridUpdater(() => Math.random() < density);
+
+const invertGrid = () => generalPurposeGridUpdater((v) => !v);
 
 function playPause() {
   if (playing) {
