@@ -84,6 +84,14 @@ function newGrid() {
     return grid;
 }
 
+function clearGrid() {
+    for (let x = 0; x < gridSize; x++) {
+        for (let y = 0; y < gridSize; y++) {
+            grid[x][y] = false;
+        }
+    }
+}
+
 function playPause() {
     if (playing) {
         playing = false;
