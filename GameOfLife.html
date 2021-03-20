@@ -2,42 +2,16 @@
 <html>
   <head>
     <title>Game of life</title>
+    <link rel="stylesheet" href="GameOfLife.css" />
   </head>
-  <body style="background-color: green; margin: 0; padding: 0">
-    <div
-      style="padding: 3px; background-color: thistle; height: 25px; width: 100%"
-    >
-      <button
-        onClick="playPause()"
-        style="padding: 3px; background-color: orange; border: 2px solid red"
-      >
-        Play/Pause
-      </button>
-      <button
-        onClick="clearGrid()"
-        style="padding: 3px; background-color: orange; border: 2px solid red"
-      >
-        Clear All
-      </button>
-      <button
-        onClick="randomizeGrid()"
-        style="padding: 3px; background-color: orange; border: 2px solid red"
-      >
-        Randomize Grid
-      </button>
-      <button
-        onClick="invertGrid()"
-        style="padding: 3px; background-color: orange; border: 2px solid red"
-      >
-        Invert Grid
-      </button>
+  <body>
+    <div class="buttonBar">
+      <button onClick="playPause()">Play/Pause</button>
+      <button onClick="clearGrid()">Clear All</button>
+      <button onClick="randomizeGrid()">Randomize Grid</button>
+      <button onClick="invertGrid()">Invert Grid</button>
     </div>
-    <canvas
-      id="canvas"
-      width="1000"
-      height="1000"
-      style="width: 100%; height: 100%"
-    ></canvas>
+    <canvas id="canvas" width="1000" height="1000"></canvas>
     <script src="GameOfLife.js"></script>
   </body>
 </html>
