@@ -90,6 +90,14 @@ function clearGrid() {
             grid[x][y] = false;
         }
     }
+    clear();
+    draw();
+}
+
+function randomizeGrid() {
+    grid = newGrid();
+    clear();
+    draw();
 }
 
 function playPause() {
