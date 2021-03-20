@@ -20,7 +20,8 @@ function clear () {
     ctx.clearRect(0, 0, canvasSize, canvasSize);
 }
 
-function draw(){
+function draw() {
+    clear();
     for (let y = 0; y < gridSize; y++) {
         for (let x = 0; x < gridSize; x++) {
             if (grid[x][y]) {
@@ -31,14 +32,12 @@ function draw(){
 }
 
 function firstFrame() {
-    clear();
     draw();
     queueNextFrame();
 }
 
 function nextFrame() {
     updateGrid();
-    clear();
     draw();
     queueNextFrame();
 }
@@ -90,13 +89,11 @@ function clearGrid() {
             grid[x][y] = false;
         }
     }
-    clear();
     draw();
 }
 
 function randomizeGrid() {
     grid = newGrid();
-    clear();
     draw();
 }
 
@@ -150,7 +147,6 @@ function canvasMouseDown({ buttons, offsetX, offsetY }) {
 
     mouseDrawState.draw = !grid[x][y];
     grid[x][y] = mouseDrawState.draw;
-    clear();
     draw();
 }
 
@@ -164,6 +160,5 @@ function canvasMouseMove({ buttons, offsetX, offsetY }) {
     const x = Math.floor(offsetX / canvas.clientWidth * canvasSize / cellSize);
     const y = Math.floor(offsetY / canvas.clientHeight * canvasSize / cellSize);
     grid[x][y] = mouseDrawState.draw;
-    clear();
     draw();
 }
