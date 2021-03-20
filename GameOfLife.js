@@ -92,6 +92,15 @@ function clearGrid() {
     draw();
 }
 
+function invertGrid() {
+    for (let x = 0; x < gridSize; x++) {
+        for (let y = 0; y < gridSize; y++) {
+            grid[x][y] = !grid[x][y];
+        }
+    }
+    draw();
+} 
+
 function randomizeGrid() {
     grid = newGrid();
     draw();
